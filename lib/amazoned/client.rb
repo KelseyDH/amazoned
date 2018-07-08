@@ -1,4 +1,4 @@
-cled Amazoned::ProductNotFoundError < StandardError; end
+class Amazoned::ProductNotFoundError < StandardError; end
 class Amazoned::BotDeniedAccessError < StandardError; end
 class Amazoned::Client
   attr_reader :asin
