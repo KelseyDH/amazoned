@@ -1,6 +1,6 @@
-class Amazonian::ProductNotFoundError < StandardError; end
-class Amazonian::BotDeniedAccessError < StandardError; end
-class Amazonian::Client
+cled Amazoned::ProductNotFoundError < StandardError; end
+class Amazoned::BotDeniedAccessError < StandardError; end
+class Amazoned::Client
   attr_reader :asin
 
   def initialize(asin)
@@ -9,7 +9,7 @@ class Amazonian::Client
 
   def call
     response = get_product
-    Amazonian::Parser.new(response).call
+    Amazoned::Parser.new(response).call
   end
 
   def get_product(num_retries = 1)
@@ -24,7 +24,7 @@ class Amazonian::Client
       if request_failed(response)
         puts "Request failed!  Trying again..."
         # On failure, recursively try again to be resilient against one-off failures
-        if num_retries <= Amazonian.max_network_retries
+        if num_retries <= Amazoned.max_network_retries
           sleep self.class.sleep_time(num_retries)
           get_product(num_retries += 1)
         else
@@ -34,7 +34,7 @@ class Amazonian::Client
         response
       end
     rescue Mechanize::ResponseCodeError => e
-      raise Amazonian::ProductNotFoundError
+      raise Amazoned::ProductNotFoundError
     end
   end
 
@@ -45,7 +45,7 @@ class Amazonian::Client
 
   def handle_failed_request!(response)
     # Raise this error when we can't penetrate Amazon's CAPTCHA wall
-    raise Amazonian::BotDeniedAccessError if response.xpath('//p[contains(text(), "Sorry, we just need to make sure")]').any?
+    raise Amazoned::BotDeniedAccessError if response.xpath('//p[contains(text(), "Sorry, we just need to make sure")]').any?
   end
 
   # Taken from Stripe API
@@ -55,14 +55,14 @@ class Amazonian::Client
     # Apply exponential backoff with initial_network_retry_delay on the
     # number of num_retries so far as inputs. Do not allow the number to exceed
     # max_network_retry_delay.
-    sleep_seconds = [Amazonian.initial_network_retry_delay * (2**(num_retries - 1)), Amazonian.max_network_retry_delay].min
+    sleep_seconds = [Amazoned.initial_network_retry_delay * (2**(num_retries - 1)), Amazoned.max_network_retry_delay].min
 
     # Apply some jitter by randomizing the value in the range of (sleep_seconds
     # / 2) to (sleep_seconds).
     sleep_seconds *= (0.5 * (1 + rand))
 
     # But never sleep less than the base sleep seconds.
-    sleep_seconds = [Amazonian.initial_network_retry_delay, sleep_seconds].max
+    sleep_seconds = [Amazoned.initial_network_retry_delay, sleep_seconds].max
 
     sleep_seconds
   end

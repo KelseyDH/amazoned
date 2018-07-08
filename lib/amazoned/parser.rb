@@ -1,4 +1,4 @@
-class Amazonian::Parser
+class Amazoned::Parser
   attr_accessor :product_hash
   attr_reader :html_doc, :response
 

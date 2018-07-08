@@ -1,3 +1,3 @@
-module Amazonian
+module Amazoned
   VERSION = "0.1.0"
 end

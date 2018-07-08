@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "amazonian/version"
+require "amazoned/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "amazonian"
-  spec.version       = Amazonian::VERSION
+  spec.name          = "amazoned"
+  spec.version       = Amazoned::VERSION
   spec.authors       = ["kelseydh"]
   spec.email         = ["kelseyh@gmail.com"]
 
@@ -29,5 +29,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "mechanize", '~> 2.7', '>= 2.7.6'
   spec.add_development_dependency "activesupport", '~> 5.2', '>= 4.2.0'
-  spec.add_development_dependency "byebug", "~> 10.0"
 end
