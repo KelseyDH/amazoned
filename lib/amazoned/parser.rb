@@ -63,12 +63,16 @@ class Amazoned::Parser
             product_hash[:rank] = parsed_parent_category.first.delete(',').to_i
             product_hash[:category] = parsed_parent_category.last
 
-            parsed_category = str.partition(")").last.partition("in").map(&:strip).map{|i| i.gsub("#", "")} - ["in"]
+            parsed_categories = str.partition(")").last.split("#").map(&:strip)
+            parsed_categories.each do |pc|
+              next if pc.blank?
+              parsed_category = pc.partition("in").map(&:strip).map{|i| i.gsub("#", "")} - ["in"]
 
-            hsh = {}
-            hsh[:rank] = parsed_category.first.delete(',').to_i
-            hsh[:ladder] = parsed_category.last
-            product_hash[:best_sellers_rank] << hsh
+              hsh = {}
+              hsh[:rank] = parsed_category.first.delete(',').to_i
+              hsh[:ladder] = parsed_category.last
+              product_hash[:best_sellers_rank] << hsh
+           end
           end
         end
 
