@@ -1,8 +1,7 @@
 # Amazoned
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/amazoned`. To experiment with that code, run `bin/console` for an interactive prompt.
+Amazoned is a ruby HTTP scraper for retrieving product best seller and category rankings from Amazon.  Designed for those who don't have the time to register for Amazon's official product API.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
