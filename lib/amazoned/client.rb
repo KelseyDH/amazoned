@@ -15,7 +15,7 @@ class Amazoned::Client
   def get_product(num_retries = 1)
     agent = Mechanize.new.tap do |web|
       web.html_parser = HtmlParser # Avoid encoding issues: https://stackoverflow.com/a/20666246/3448554
-      web.user_agent_alias = (Mechanize::AGENT_ALIASES.keys - ["Mechanize", "Linux Firefox", "Linux Mozilla", "Mac Firefox", "Mac Mozilla", "Mac Safari", "Windows Chrome", "Windows IE 10", "Windows IE 11", "Windows Edge", "Windows Mozilla", "Windows Firefox"]).sample # spoof every request with a random User Agent as a way to hit fewer CAPTCHA walls
+      web.user_agent_alias = (["Linux Firefox", "Linux Mozilla", "Mac Firefox", "Mac Mozilla", "Mac Safari", "Windows Chrome", "Windows IE 10", "Windows IE 11", "Windows Edge", "Windows Mozilla", "Windows Firefox"]).sample # spoof every request with common User Agents available in Mechanize as a way to hit fewer CAPTCHA walls
     end
 
     begin
