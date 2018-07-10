@@ -22,7 +22,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use Amazoned to scrape data about a product using the ASIN of the Amazon product.  E.g. for product with an ASIN of B078SX6STW:
+
+```ruby
+    Amazoned::Client.new("B078SX6STW").call
+```
+
+will return back a Ruby hash of:
+
+```ruby
+    {
+        :best_sellers_rank=>[
+          {:rank=>45,
+            :ladder=>"Baby > Baby Care > Pacifiers, Teethers & Teething Relief > Teethers"}
+        ],
+        :rank=>1602,
+        :category=>"Baby",
+        :package_dimensions=>"6.8 x 6.3 x 1.9 inches"
+    }
+```
+
+Amazoned will raise the error `Amazoned::ProductNotFoundError` if the product ASIN does not exist.
+
+Amazoned will raise the error `Amazoned::BotDeniedAccessError`  if the scraper is unable to get past a CAPTCHA wall after trying multiple times for the same ASIN.
+
+To avoid anti-scraper detection, the bot spoofs a new User Agent every request and uses timing jitter to vary how long it sleeps in-between each request.
+
+
+## Configuring Automatic Retries
+The library can be configured to automatically retry requests that fail due to the scraper bot hitting a CAPTCHA page:
+
+```ruby
+    Amazoned.max_network_retries = 2
+```
+
+By default, `max_network_retries` is set to `3`.
 
 ## Development
 
