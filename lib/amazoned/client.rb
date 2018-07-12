@@ -21,6 +21,7 @@ class Amazoned::Client
     begin
       # Start GET request of Amazon page using ASIN.
       response = agent.get("https://www.amazon.com/dp/#{asin}")
+
       if request_failed(response)
         puts "Request failed!  Trying again..."
         # On failure, recursively try again to be resilient against one-off failures
@@ -34,7 +35,15 @@ class Amazoned::Client
         response
       end
     rescue Mechanize::ResponseCodeError => e
-      raise Amazoned::ProductNotFoundError
+      if e.response_code.to_i < 500
+        raise Amazoned::ProductNotFoundError
+      elsif e.response_code.to_i >= 500 && num_retries <= Amazoned.max_network_retries
+        puts "Request failed with 500 error!  Trying again..."
+        sleep self.class.sleep_time(num_retries)
+        get_product(num_retries += 1)
+      else
+        raise e
+      end
     end
   end
 
