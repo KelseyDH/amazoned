@@ -1,23 +1,22 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.0
-  - 2.1
-  - 2.2
-  - 2.3
-  - 2.4
-  - 2.5
-
+- 2.0
+- 2.1
+- 2.2
+- 2.3
+- 2.4
+- 2.5
 notifications:
   email:
     on_success: never
-
 before_install: gem install bundler -v 1.16.2
-
 deploy:
   provider: rubygems
   api_key:
-    secure: uMTyt/AJ1i2aHzvnkrmL1M3F9bgFAsdTodLA8h1U5d8awKwtrRaU7JIxEe4AZF8XsvapV2LfTh5NViYvdjH3Bwunf0XWH2gf4P6c4UQVXjVYWPrHpH5vUweNph5DFb/cMHzpqsZAw/3SbYB4JgDfvS45xGXCx4FSjVGcgAdx/BJ2PkC+r7J7BMfr7vfVS+bj/pB84EERajbhS9ebSHVTXmQBfQQEx0kfY5wnt7QtVwxtiFCzVI73uRuIgdzyFAjJhz4TY12kiKJgVPBLMNVpfHrgtG89oQeYIuV3Mcq38l7PQZzWR4OUVoHWcHGCyoiX+R6imoRNJPFejCPlB4V7AOtwBtgaRpPybZLO4Bvdv5PvTYECgR5Y8y2Ww9OXnG4ZFBZdChvHCtfQZNLiC3S8NSj5R9hS7efbdcfDI6db52zLp+hOXkeorCyPtFtLOhJa8ONJjiS3TQPxOh0hELrQ3p2Tn2F1q/v4ixc6uiyFgU6U60nOx3mCaTx8PgpSt9NO6B70DaQM6N7U/+TtizEeTH2rs8DkWf5X9fytbrsridnGGpEDR9wOEUyy13k+j2mBD8RkZhAdg5Vh/8gzj4ezSc4TiXA+ZMJJrZMCgw5oRx/Vy/PfQBJzo2oxEUpELlmSNOh8Ez6pWVrJRjVta/HkPN4a8XNdLoNRZCGWN8RaNLM=
-
+    secure: rCQbsoz5n/XlZtauOWgZxeuFJq1ADbd4ah8NGChR+dYuaZ/tn5FloZBMfFbhb/0Ps0dTPXOCSUW+xvEJhAZAd0F4JkWYrh1yMRz+UvnchM5uivyvME9oX2avxT0Jb9I2VeLFZiy4AcWsZB72+rYolxgAa8H10ANUWO43ldGmqjrLYFvR9cjYyPGBK5kQn8XhYj4nJMi2I32pOqZE/AzB7GBTdDUIoshsFKCQhdLcfZ4b44fMlMuP/ETY9CAXY+v33eiy7gwEesq6RzIO96XDHnwLIlFDhxvSgVlSNAMW/Gib07jEt49W/lJoe9bHt/dVyBE3uzxELfhat0KdDpQeMB3LURmhVnx53CSOZtouI8bl601E7Uj36D8R8dGj+03d+VmxDnQiXKYUMnjHEZeOmJ/+TIwTcZNx1aTxFNHOIrxJkyXlkzYLgV9+me10YnbywJOhhRHFBVp6+mpeaCRK5UtIHTFs2nPKX8AQ1fNvcWbD6LOdA6FpAKsqdjYDYJ+clp/ItG0BtlSinZg97+U3FgUySaas/JQSCT5nu5gz2Cmd+O1xtZQfaq+yCtN9qrwHxDFrxXkg/bdtBvBF4tX8hAmxk1ycd1kHzmkZZCFjYZwwoeF/3umFiWOarlorAESquKokGLw5A3E9cl/za96Mr64wdcGzKB0NL9TrJU8zRZ4=
+  gem: amazoned
+  on:
+    repo: KelseyDH/amazoned
 script:
-  - bundle exec rake
+- bundle exec rake
