@@ -1,6 +1,6 @@
 # Amazoned
 
-[![Build Status](https://travis-ci.org/kelseydh/amazoned.svg?branch=master)](https://travis-ci.org/kelseydh/amazoned)
+[![Build Status](https://travis-ci.org/KelseyDH/amazoned.svg?branch=master)](https://travis-ci.org/KelseyDH/amazoned)
 
 Amazoned is a ruby HTTP scraper for retrieving product best seller and category rankings from Amazon.  Designed for those who don't have the time to register for Amazon's official product API.
 
