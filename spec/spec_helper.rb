@@ -1,17 +1,20 @@
-require "bundler/setup"
-require "coveralls"
-Coveralls.wear!
-require 'rspec'
 require 'simplecov'
-require 'simplecov-console'
-SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+])
 SimpleCov.start
-require "amazoned"
+
+require 'bundler/setup'
+require 'rspec'
+require 'amazoned'
 
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
