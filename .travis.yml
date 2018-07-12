@@ -15,4 +15,4 @@ deploy:
   on:
     repo: KelseyDH/amazoned
 script:
-- bundle exec rake
+- bundle exec rspec spec

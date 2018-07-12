@@ -1,5 +1,13 @@
 require "bundler/setup"
+require "coveralls"
+Coveralls.wear!
+require 'rspec'
+require 'simplecov'
+require 'simplecov-console'
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start
 require "amazoned"
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
