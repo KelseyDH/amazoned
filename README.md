@@ -21,6 +21,8 @@ Or install it yourself as:
 
     $ gem install amazoned
 
+This gem supports Ruby versions 2.4 or higher.
+
 ## Usage
 
 Use Amazoned to scrape data about a product using the ASIN of the Amazon product.  E.g. for product with an ASIN of B078SX6STW:
